@@ -1,1 +1,27 @@
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <h1>Redirecting to the domain...</h1>
+    <script>
+        // URL to the raw GitHub file
+        const domainUrl = 'https://raw.githubusercontent.com/MuhIkhsanH/web/main/domain.txt';
+
+        // Fetch the domain URL from the GitHub file
+        fetch(domainUrl)
+        .then(response => response.text())
+        .then(domain => {
+            // Trim any whitespace and redirect
+            window.location.href = domain.trim();
+        })
+        .catch(error => {
+            console.error('Error fetching domain:', error);
+            document.body.innerHTML = '<p>Error fetching domain. Please try again later.</p>';
+        });
+    </script>
+</body>
+</html>
