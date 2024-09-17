@@ -15,7 +15,10 @@
         fetch(domainUrl)
         .then(response => response.text())
         .then(domain => {
-            // Trim any whitespace and redirect
+            // Trim any whitespace and redirect, ensure it has 'http' or 'https'
+            if (!domain.trim().startsWith('http')) {
+                domain = 'https://' + domain.trim();
+            }
             window.location.href = domain.trim();
         })
         .catch(error => {
